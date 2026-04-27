@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  @apply bg-neural-dark text-white font-sans antialiased;
+}
+
+.glass-card {
+  @apply bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl;
+}
+
+.scanline-overlay {
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.02),
+    rgba(255, 255, 255, 0.02) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  mix-blend-mode: soft-light;
+  animation: scanline 8s linear infinite;
+  opacity: 0.2;
+}
+
+@keyframes scanline {
+  from {
+    transform: translateY(-10px);
+  }
+  to {
+    transform: translateY(10px);
+  }
+}
+
+.ai-cursor {
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  position: fixed;
+  pointer-events: none;
+  z-index: 50;
+  mix-blend-mode: screen;
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.85), rgba(6, 182, 212, 0.25) 60%, transparent);
+  box-shadow: 0 0 18px rgba(124, 58, 237, 0.65);
+  transform: translate(-50%, -50%);
+}
+
+.section-wrap {
+  @apply py-20 md:py-28 px-4;
+}
+
+.section-inner {
+  @apply max-w-6xl mx-auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
